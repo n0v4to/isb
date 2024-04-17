@@ -32,3 +32,13 @@ def read_json(path: str) -> dict:
     """
     with open(path, 'r', encoding='UTF-8') as file:
         return json.load(file)
+
+
+def write_json(path: str, info: dict) -> None:
+    """The function for writing data to a json file
+    Args:
+      info: the data to be written to the file
+      path: the path to the file
+    """
+    with open(path, 'w', encoding='UTF-8') as file:
+        json.dump(info, file, ensure_ascii=False, indent=4)
