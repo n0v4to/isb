@@ -43,3 +43,24 @@ def write_json(path: str, info: List[int]) -> None:
     """
     with open(path, 'w', encoding='UTF-8') as file:
         json.dump(info, file, ensure_ascii=False, indent=4)
+
+
+def read_json_task_2(path: str) -> dict:
+    """The function of reading data from a json file
+    Args:
+      path: the path to the file
+    Returns:
+      Dictionary with json file structure
+    """
+    with open(path, 'r', encoding='UTF-8') as file:
+        return json.load(file)
+
+
+def write_json_task_2(path: str, info: dict) -> None:
+    """The function for writing data to a json file
+    Args:
+      info: the data to be written to the file
+      path: the path to the file
+    """
+    with open(path, 'w', encoding='UTF-8') as file:
+        json.dump(info, file, ensure_ascii=False, indent=4)
