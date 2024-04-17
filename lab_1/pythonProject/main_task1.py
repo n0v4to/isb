@@ -1,4 +1,3 @@
-# import json
 from read_write_files import *
 from text_encoding import *
 
