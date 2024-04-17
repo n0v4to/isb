@@ -1,4 +1,5 @@
 import json
+from typing import List
 
 
 def read_file(path: str) -> str:
@@ -23,7 +24,7 @@ def write_file(path: str, info: str) -> None:
         file.write(info)
 
 
-def read_json(path: str) -> dict:
+def read_json(path: str) -> List[int]:
     """The function of reading data from a json file
     Args:
       path: the path to the file
@@ -34,7 +35,7 @@ def read_json(path: str) -> dict:
         return json.load(file)
 
 
-def write_json(path: str, info: dict) -> None:
+def write_json(path: str, info: List[int]) -> None:
     """The function for writing data to a json file
     Args:
       info: the data to be written to the file

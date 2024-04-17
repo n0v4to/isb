@@ -1,6 +1,7 @@
+from typing import List
 
 
-def encrypt(text: str, permutation: dict) -> str:
+def encrypt(text: str, permutation: List[int]) -> str:
     """
         Encrypts the text using a permutation cipher.
 
@@ -23,7 +24,7 @@ def encrypt(text: str, permutation: dict) -> str:
     return ''.join(encrypted_text)
 
 
-def decrypt(encrypted_text: str, permutation: dict) -> str:
+def decrypt(encrypted_text: str, permutation: List[int]) -> str:
     """
         Decrypts the encrypted text using a permutation cipher.
 
