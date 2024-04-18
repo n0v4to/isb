@@ -12,8 +12,8 @@ def read_file(path: str) -> str:
         with open(path, "r", encoding='UTF-8') as file:
             text = file.read()
         return text
-    except FileNotFoundError:
-        print(f"The file was not found")
+    except FileNotFoundError as e:
+        print(f"The file was not found: {e}")
     except Exception as e:
         print(f"An error occurred while reading the file: {str(e)}")
 
