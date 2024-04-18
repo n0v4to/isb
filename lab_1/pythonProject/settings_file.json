@@ -1,0 +1,13 @@
+{
+    "path_decryption_text": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/decryption_text.txt",
+    "path_decryption_key": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/decryption_key.json",
+    "path_frequencies": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/frequencies.json",
+    "path_key_task_1": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/key.json",
+    "path_text_task_1": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/text1.txt",
+    "path_encrypted_text": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/encrypted_text.txt",
+    "path_decrypted_text": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/decrypted_text.txt",
+    "path_text_task_2": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/cod4.txt",
+    "path_key_task_2": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/decryption_key.json",
+    "path_frequency": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/frequencies.json",
+    "path_alphabet": "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_2/data.json"
+}

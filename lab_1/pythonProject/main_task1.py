@@ -3,17 +3,14 @@ from text_encoding import *
 
 
 if __name__ == "__main__":
-    path = "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/key.json"
-    info = [2, 1, 4, 5, 3]
-    write_json(path, info)
+    config = read_json_task_2("settings_file.json")
+    text = config["path_text_task_1"]
+    permutation = config["path_key_task_1"]
 
-    text = read_file("/texts/task_1/text1.txt")
-    permutation = read_json("D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/key.json")
-    print(permutation)
     encrypted_text = encrypt(text, permutation)
     decrypted_text = decrypt(encrypted_text, permutation)
 
-    path_encrypted_text = "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/encrypted_text.txt"
-    path_decrypted_text = "D:/Code/3sem/isb/isb/lab_1/pythonProject/texts/task_1/decrypted_text.txt"
+    path_encrypted_text = config["path_encrypted_text"]
+    path_decrypted_text = config["path_decrypted_text"]
     write_file(path_encrypted_text, encrypted_text)
     # write_file(path_decrypted_text, decrypted_text)
