@@ -12,7 +12,7 @@ def frequency_analysis(path: str, info: str) -> None:
     """
     total = len(info)
     frequencies = {char: count / total for char, count in Counter(info).items()}
-    write_json_task_2(path, frequencies)
+    write_json(path, frequencies)
 
 
 def compare_frequencies(path: str, frequencies: dict, alphabet_frequencies: dict) -> None:
@@ -34,4 +34,4 @@ def compare_frequencies(path: str, frequencies: dict, alphabet_frequencies: dict
             if alpha_char not in decryption_key.values() and alpha_char not in decryption_key.keys():
                 decryption_key[char] = alpha_char
                 break
-    write_json_task_2(path, decryption_key)
+    write_json(path, decryption_key)
