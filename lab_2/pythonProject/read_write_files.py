@@ -25,7 +25,7 @@ def write_file(path: str, info: str) -> None:
       info: information written to file
     """
     try:
-        with open(path, "w", encoding='UTF-8') as file:
+        with open(path, "a+", encoding='UTF-8') as file:
             file.write(info)
     except Exception as e:
         print(f"An error occurred while writing the file: {str(e)}")
