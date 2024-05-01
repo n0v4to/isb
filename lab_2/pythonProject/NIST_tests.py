@@ -1,6 +1,5 @@
 import math
 import mpmath
-import os
 
 from read_write_files import *
 
@@ -74,17 +73,27 @@ def longest_run_ones_test_nist(sequence: str, txt_file_path: str, key: str) -> N
     try:
         n = len(sequence)
         m = 8
-
+        blocks = [sequence[i:i + m] for i in range(0, n, m)]
+        v = {1: 0, 2: 0, 3: 0, 4: 0}
+        for block in blocks:
+            max_count = 0
+            count = 0
+            for bit in block:
+                count = count + 1 if bit == "1" else 0
+                max_count = max(max_count, count)
+            match max_count:
+                case 0 | 1:
+                    v[1] += 1
+                case 2:
+                    v[2] += 1
+                case 3:
+                    v[3] += 1
+                case _:
+                    v[4] += 1
+        xi_square = 0
+        for i in range(4):
+            xi_square += pow(v[i + 1] - 16 * PI[i], 2) / (16 * PI[i])
+        p_v = mpmath.gammainc(3 / 2, xi_square / 2)
+        write_file(txt_file_path, f'{key} : {p_v}\n')
     except Exception as e:
         print("Test for the longest sequence of ones in the block, ERROR:", e)
-
-
-if __name__ == "__main__":
-    config = read_json("settings_file.json")
-    sequences = read_json(config["From"])
-    sequences_cpp = sequences["C++"]
-    sequences_java = sequences["Java"]
-    frequency_test_nist(sequences_cpp, config["To"], "C++")
-    frequency_test_nist(sequences_java, config["To"], "Java")
-    same_bits_test_nist(sequences_cpp, config["To"], "C++")
-    same_bits_test_nist(sequences_java, config["To"], "Java")
