@@ -1,4 +1,3 @@
-from read_write_files import *
 from NIST_tests import *
 
 
