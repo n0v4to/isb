@@ -1,8 +1,11 @@
 {
-    "initial_file": "path/to/inital/file.txt",,,
-    "encrypted_file": "path/to/encrypted/file.txt",,,
-    "decrypted_file": "path/to/decrypted/file.txt",,,
-    "symmetric_key": "path/to/symmetric/key.txt",
-    "public_key": "path/to/public/key.pem",
-    "secret_key": "path/to/secret/key.pem"
+    "initial_file": "D:/Code/3sem/isb/isb/lab_3/lab_3/text.txt",
+    "encrypted_file": "D:/Code/3sem/isb/isb/lab_3/lab_3/encrypted_text.txt",
+    "decrypted_file": "D:/Code/3sem/isb/isb/lab_3/lab_3/decrypted_text.txt",
+
+    "symmetric_key": "D:/Code/3sem/isb/isb/lab_3/lab_3/text.txt",
+    "public_key": "D:/Code/3sem/isb/isb/lab_3/lab_3/public_key.pem",
+    "secret_key": "D:/Code/3sem/isb/isb/lab_3/lab_3/secret_key.pem",
+    "encrypted_symmetric_key": "D:/Code/3sem/isb/isb/lab_3/lab_3/text.txt",
+    "decrypted_symmetric_key": "D:/Code/3sem/isb/isb/lab_3/lab_3/text.txt"
 }
