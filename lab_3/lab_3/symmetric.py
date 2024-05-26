@@ -19,14 +19,17 @@ class Symmetric:
 
     def key_generation(self, size_key: int) -> bytes:
         """
-        Generates a random 16 byte encryption key.
+        Generates a random encryption key of the specified length in bits.
 
         Args:
-            size_key: size of key
+            size_key: The desired length of the encryption key in bits.
         Returns:
             The generated encryption key.
         """
-        self.key = os.urandom(size_key)
+        if size_key < 40 or size_key > 128 or size_key % 8 != 0:
+            raise ValueError("Некорректная длина ключа. Длина должна быть от 40 до 128 кратно 8.")
+
+        self.key = os.urandom(size_key // 8)
         return self.key
 
     def key_serialization(self, path: str) -> None:
@@ -39,11 +42,10 @@ class Symmetric:
         try:
             with open(path, 'wb') as key_file:
                 key_file.write(self.key)
-            print(f"The symmetric key has been successfully written to the file '{path}'.")
         except FileNotFoundError:
-            print("The file was not found")
+            print(f"Ошибка! Файл {path} не найден.")
         except Exception as e:
-            print(f"An error occurred while writing the file: {str(e)}")
+            print(f"Непредвиденная ошибка: {str(e)}")
 
     def key_deserialization(self, path: str) -> None:
         """
@@ -57,9 +59,9 @@ class Symmetric:
             with open(path, "rb") as file:
                 self.key = file.read()
         except FileNotFoundError:
-            print("The file was not found")
+            print(f"Ошибка! Файл {path} не найден.")
         except Exception as e:
-            print(f"An error occurred while reading the file: {str(e)}")
+            print(f"Непредвиденная ошибка: {str(e)}")
 
     def encrypt(self, path: str, encrypted_path: str) -> bytes:
         """
@@ -71,7 +73,7 @@ class Symmetric:
         Returns:
             The encrypted data.
                 """
-        text = read_bytes(path)
+        text = read_bytes_from_text(path)
         iv = os.urandom(8)
         cipher = Cipher(algorithms.CAST5(self.key), modes.CFB(iv), backend=default_backend())
         encryptor = cipher.encryptor()

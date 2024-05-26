@@ -11,7 +11,7 @@ def write_file(path: str, info: str) -> None:
         with open(path, "a+", encoding='UTF-8') as file:
             file.write(info)
     except Exception as e:
-        print(f"An error occurred while writing the file: {str(e)}")
+        print(f"Непредвиденная ошибка: {str(e)}")
 
 
 def read_json(path: str) -> dict:
@@ -25,9 +25,9 @@ def read_json(path: str) -> dict:
         with open(path, 'r', encoding='UTF-8') as file:
             return json.load(file)
     except FileNotFoundError:
-        print("The file was not found")
+        print(f"Ошибка! Файл {path} не найден.")
     except Exception as e:
-        print(f"An error occurred while reading the JSON file: {str(e)}")
+        print(f"Непредвиденная ошибка: {str(e)}")
 
 
 def read_bytes(path: str) -> bytes:
@@ -43,9 +43,27 @@ def read_bytes(path: str) -> bytes:
             data = file.read()
         return data
     except FileNotFoundError:
-        print("The file was not found")
+        print(f"Ошибка! Файл {path} не найден.")
     except Exception as e:
-        print(f"An error occurred while reading the file: {str(e)}")
+        print(f"Непредвиденная ошибка: {str(e)}")
+
+
+def read_bytes_from_text(path: str) -> bytes:
+    """
+    Reads the bytes contents of a file in text format.
+    Args:
+        path: The path to the file to be read.
+    Returns:
+        The contents of the file in binary format.
+    """
+    try:
+        with open(path, "r", encoding='UTF-8') as file:
+            text = file.read()
+        return text.encode('utf-8')
+    except FileNotFoundError:
+        print(f"Ошибка! Файл {path} не найден.")
+    except Exception as e:
+        print(f"Непредвиденная ошибка: {str(e)}")
 
 
 def write_bytes_text(path: str, bytes_text: bytes) -> None:
@@ -58,8 +76,7 @@ def write_bytes_text(path: str, bytes_text: bytes) -> None:
     try:
         with open(path, "wb") as file:
             file.write(bytes_text)
-        print(f"The data has been successfully written to the file '{path}'.")
     except FileNotFoundError:
-        print("The file was not found")
+        print(f"Ошибка! Файл {path} не найден.")
     except Exception as e:
-        print(f"An error occurred while writing the file: {str(e)}")
+        print(f"Непредвиденная ошибка: {str(e)}")
