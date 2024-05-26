@@ -1,0 +1,42 @@
+Index: ../../lab_3/lab3/read_write_file.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../../lab_3/lab3/read_write_file.py b/../../lab_3/lab3/read_write_file.py
+new file mode 100644
+--- /dev/null	
++++ b/../../lab_3/lab3/read_write_file.py	
+@@ -0,0 +1,30 @@
++import json
++
++
++def read_json(path: str) -> dict:
++    """The function of reading data from a json file
++    Args:
++      path: the path to the file
++    Returns:
++      Dictionary with json file structure
++    """
++    try:
++        with open(path, 'r', encoding='UTF-8') as file:
++            return json.load(file)
++    except FileNotFoundError:
++        print("The file was not found")
++    except Exception as e:
++        print(f"An error occurred while reading the JSON file: {str(e)}")
++
++
++def write_json(path: str, info: dict) -> None:
++    """The function for writing data to a json file
++    Args:
++      info: the data to be written to the file
++      path: the path to the file
++    """
++    try:
++        with open(path, 'w', encoding='UTF-8') as file:
++            json.dump(info, file, ensure_ascii=False, indent=4)
++    except Exception as e:
++        print(f"Error writing to the file: '{e}'.")
+diff --git a/../../lab_3/lab3/ggg.py b/../../lab_3/lab3/ggg.py
+new file mode 100644
