@@ -46,3 +46,52 @@ def get_number(original_hash: str, bins: list, last_digit: int, count_process: i
                 print(f"The number of the selected card with the number of processes = {count_process} : {result}")
                 p.terminate()
                 return result
+
+
+def luhn_algorithm(card_number: str) -> bool:
+    """
+       Checks if a card number is valid using the Luhn algorithm.
+
+       Args:
+       card_number (str): The card number to be validated.
+
+       Returns:
+       bool: True if the card number is valid, False otherwise.
+    """
+    digits = [int(digit) for digit in reversed(card_number)]
+    for i in range(1, len(digits), 2):
+        digits[i] *= 2
+        if digits[i] > 9:
+            digits[i] = (digits[i] // 10) + (digits[i] % 10)
+    return sum(digits) % 10 == 0
+
+
+def graphing(original_hash: str, bins: list, last_digit: int) -> None:
+    """
+        Plots a graph of the execution time of the `get_number` function depending on the number of processes used.
+
+        Args:
+        original_hash: The hash value of the full card number to find a match for.
+        bins: List of possible card number prefixes (BIN).
+        last_digit: The last digit of the card number.
+    """
+    time_list = list()
+    for count_process in tqdm(range(1, int(mp.cpu_count() * 1.5)), desc="Collision Search"):
+        start_time = time.time()
+        if get_number(original_hash, bins, last_digit, count_process):
+            time_list.append(time.time() - start_time)
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.bar(range(1, int(mp.cpu_count() * 1.5)), time_list, color='#4CAF50', edgecolor='black', linewidth=1)
+    ax.set_xlabel('Number of Processes')
+    ax.set_ylabel('Time, s')
+    ax.set_title("Execution Time Statistics")
+    plt.show()
+
+
+if __name__ == "__main__":
+    setting = work_with_file.read_json("parameters_card.json")
+    # number = work_with_file.read_json("card.json")
+    # print(f'The card number is correct: {luhn_algorithm(number["card"])}')
+    print(f'The card number is correct: {luhn_algorithm("2200700708409551")}')
+    # graphing(setting["hash"], setting["bins"], setting["last_numbers"])
+    get_number(setting["hash"], setting["bins"], setting["last_numbers"])

@@ -1,7 +1,7 @@
 import json
 
 
-def write_file(path: str, info: list) -> None:
+def write_file(path: str, info: str) -> None:
     """The function of writing information to a file
     Args:
       path: the path to the file
