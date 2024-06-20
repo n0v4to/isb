@@ -68,16 +68,22 @@ class MainWindow(QMainWindow):
                 "Please fill in all the card details",
             )
             return
-        try:
-            last_number = int(last_number)
-            bins = [int(item) for item in bins]
-        except ValueError:
-            QMessageBox.information(
-                None,
-                "Invalid input",
-                "Please enter valid values for the last 4 digits and BINs",
-            )
-            return
+        # try:
+        #     # last_number = int(last_number)
+        #     # bins = [int(item) for item in bins]
+        # except ValueError:
+        #     QMessageBox.information(
+        #         None,
+        #         "Invalid input",
+        #         "Please enter valid values for the last 4 digits and BINs",
+        #     )
+        #     return
+        print(hash_card)
+        print(type(hash_card))
+        print(bins)
+        print(type(bins))
+        print(last_number)
+        print(type(last_number))
         card_number = functions_for_cards.get_number(hash_card, bins, last_number)
         if card_number:
             directory = QFileDialog.getSaveFileName(
